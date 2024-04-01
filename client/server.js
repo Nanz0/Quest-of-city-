@@ -11,12 +11,12 @@ const http = require('http');
 const {Server} = require('socket.io');
 
 const server = http.createServer(app);
-// Parse JSON bodies (as sent by API clients)
 
 const io = new Server(server);
 app.use(express.static(path.resolve(__dirname, ''))); // Serve static files
 
 app.use(cors());
+// Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
 const landmarks = [
