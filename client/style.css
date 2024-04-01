@@ -1,0 +1,701 @@
+body, .container-fluid{
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.deck-container{
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr ;
+  grid-template-areas: "a b c" "d e f";
+  column-gap: 10px;
+  row-gap: 10px;
+
+  position: fixed;
+  bottom: 5px;
+  right: 10%;
+}
+
+.card-pos-a{
+  grid-area: a;
+}
+
+.card-pos-b{
+  grid-area: b;
+}
+
+.card-pos-c{
+  grid-area: c;
+}
+
+.card-pos-d{
+  grid-area: d;
+}
+
+.card-pos-e{
+  grid-area: e;
+}
+
+.card-pos-f{
+  grid-area: f;
+}
+
+.clue-card{
+  width: 120px;
+  height: 170px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  text-align: center;
+
+  background-image: url("../images/clueBack.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  --tx: 0px; /* Default translation X */
+  --ty: 0px; /* Default translation Y */
+}
+
+@keyframes shuffleAnimation {
+  0%,
+  100% {
+    transform: translate(var(--tx), var(--ty));
+  }
+  25% {
+    transform: translate(calc(var(--tx) - 10px), var(--ty));
+  }
+  50% {
+    transform: translate(calc(var(--tx) + 10px), var(--ty));
+  }
+  75% {
+    transform: translate(calc(var(--tx) - 10px), var(--ty));
+  }
+}
+
+.card.shuffling {
+  animation: shuffleAnimation 0.5s forwards; /* Use the animation */
+}
+
+.clue-card.moving {
+  animation: shuffleAndMoveAround 2s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+.div-to-appear, .div-to-appear-2{
+  visibility: hidden;
+}
+
+.cont{
+  background-image: url("../images/Background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+  padding-top: 110px;
+}
+
+#authForm, #signup-div {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  margin: auto;
+}
+
+form label, form input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input {
+  width: calc(100% - 22px); /* Adjust input width */
+  padding: 10px;
+}
+
+form button {
+  padding: 10px 20px;
+}
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+}
+
+.error-input {
+  border-color: red; /* Make the border of the input fields red */
+}
+
+.container-fluid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../images/Taj.jpg");
+    background-size: cover;
+    opacity: 0.8; /* Adjust the opacity as needed */
+    z-index: -1;
+}
+
+.shuffleBtn{
+  color: gold;
+}
+
+#name-tag-div{
+  display: flex;
+  justify-content: center;
+  /* padding-left: 30%; */
+  gap: 24%;
+  color: white;
+  visibility: hidden;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+  justify-content: center;
+  align-items:center;
+}
+
+#Taj, #Eiffel, #Chinawall, #Liberty, #Athens, #Giza, #Sydneyopera, #Colosseum, #Machupicchu, #Sphinx, #Petra, #Angkor, #FaisalMosque {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  position: relative; /* Position relative to contain absolute text */
+}
+
+#FaisalMosque{
+  background-image: url("./images/FaisalMosque.png");
+}
+
+#Athens{
+  background-image: url("./images/athens.png");
+}
+
+#Angkor{
+  background-image: url("./images/angkor.png");
+}
+
+#Petra{
+  background-image: url("./images/petra.png");
+}
+
+#Sphinx{
+  background-image: url("./images/sphnix.png");
+}
+
+#Machupicchu{
+  background-image: url("./images/machupicchu.png");
+}
+
+#Sydneyopera{
+  background-image: url("./images/sydneyopera.png");
+}
+
+#Colosseum{
+  background-image: url("./images/colosseum.png");
+}
+
+#Giza{
+  background-image: url("./images/giza.png");
+}
+
+#Liberty{
+  background-image: url("./images/liberty.png");
+}
+
+#Taj{
+  background-image: url("../images/tajmahal.jpg");
+}
+
+#Eiffel{
+  background-image: url("../images/eiffel.png");
+}
+
+#Chinawall{
+  background-image: url("../images/chinawall.png");
+
+}
+
+.landmark-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+  color: white;
+  text-align: center;
+  padding: 0px;
+}
+
+.clue-card{
+  visibility: hidden;
+}
+
+.user-info{
+  display: flex;
+  width: 100%;
+}
+
+.p1_badge{
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.user-name{
+  background-color: maroon;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.landmark-card {
+  width: 120px;
+  height: 170px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.clue-card-text {
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency as needed */
+  color: white;
+  padding: 5px; /* Add some padding around the text */
+  border-radius: 5px; /* Optional: rounds the corners of the background */
+}
+
+.clue-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    z-index: 1; /* Ensure the hovered card is above others */
+}
+
+.user-1:hover, .user-2:hover, .user-3:hover {
+    transform: translateZ(-10px) scale(1.02);
+    z-index: 2; /* Ensure the hovered card is above others */
+}
+
+.match-container{
+  visibility: hidden;
+}
+
+.user-clue{
+  width: 110px;
+  height: 160px;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: white;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.user-3{
+  height: 170px;
+  background-color: rgb(152, 112, 10);
+  color: black;
+  transform-origin: bottom center;
+}
+
+.user-1{
+  background-image: url("../images/clueBack2.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.user-3, .user-2{
+  background-image: url("../images/clueBack.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.user-1-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 25%;
+  margin-bottom: 100px;
+}
+
+.usercards-2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: absolute;
+  left: 95%;
+  bottom: 150px
+}
+
+.usercards-3{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: absolute;
+  left: 5%;
+  bottom: 150px
+}
+
+.user-1{
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  border: 1px solid black;
+  border-radius: 8px;
+  text-align: center;
+  transform-origin: bottom center;
+}
+
+.user-3, .user-2 {
+  position: absolute;
+  width: 110px;
+  height: 170px;
+  border: 1px solid black;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+  transform-origin: bottom center;
+}
+
+/* Style for each label that contains a checkbox and text */
+form#landmarkForm label {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  gap: 0;
+  margin-bottom: 0;
+  padding-bottom: 0px;
+}
+
+/* Style for checkboxes to add some margin */
+form#landmarkForm input[type="checkbox"] {
+  margin-right: 0px; /* Adds space between the checkbox and the label text */
+  width: 20px;
+  margin-top: 10px;
+}
+
+#landmarkSelection{
+  background-color: #f0f0f0;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  width: 300px;
+  margin: auto;
+}
+
+
+/* The Modal (background) */
+.trivia-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top of everything else */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.trivia-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+#player-sidebar {
+  position: fixed;
+  top: 10%;
+  right: 1%;
+  width: 300px;
+  height: fit-content;
+  background-color: #f0f0f0;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+
+  display: none;
+  
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#landmarkSelectionBtn{              
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 40px;
+  background-color: dodgerblue;
+}
+
+#player-leftbar{
+  position: fixed;
+  top: 10%;
+  left: 1%;
+  width: 250px;
+  height: 10vh;
+  background-color: #f0f0f0;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+}
+
+#random-event{
+  position: fixed;
+  top: 25%;
+  left: 1%;
+  width: 250px;
+  height: fit-content;
+  height: -moz-fit-content;
+  background-color: maroon;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  display: block;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+  visibility: hidden;
+}
+
+#negotiation-area{
+  position: fixed;
+  top: 10%;
+  right: 1%;
+  width: 200px;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: transparent;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+#negotiate-btn{
+  background-color: lightgreen;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  height: 50px;
+}
+
+.coin-balance, .special-cards {
+  margin: 10px 0;
+  font-size: 20px;
+  cursor: pointer;
+
+}
+
+.special-card-controls {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+}
+
+#time-limiter{
+  color: white;
+}
+
+.control-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #ddd;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.control-button:hover {
+  background-color: #ccc;
+}
+
+
+.modal { 
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content { 
+  background-color: #fefefe; 
+  margin: 15% auto; 
+  padding: 20px; 
+  border: 1px solid #888; 
+  width: 80%;
+}
+
+.close { 
+  color: #aaa; 
+  float: right; 
+  font-size: 28px; 
+  font-weight: bold;
+}
+
+.negotiate-close{
+  color: #aaa; 
+  float: left; 
+  font-size: 28px; 
+  font-weight: bold;
+  margin-left: auto;
+  visibility: hidden;
+}
+
+.close:hover, .close:focus, .negotiate-close:hover, .negotiate-close:focus { 
+  color: black; 
+  text-decoration: none; 
+  cursor: pointer;
+}
+
+button { 
+  margin: 10px;
+}
+
+/* In your CSS, style the snackbar */
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.player-badge-div{
+  position: fixed;
+  bottom: 10px;
+}
+
+.player2-badge-div{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+#createGame{
+  background-color: gold;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 50px;
+}
+
+#joinGame{
+  background-color: lightgreen;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 50px;
+}
+
+#signup-user{
+  background-color: blueviolet;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 50px;
+}
+
+#login-user{
+  background-color: lightcoral;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 50px;
+}
